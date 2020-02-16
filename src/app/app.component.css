@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body {
+  background-color: rgb(153, 211, 226);
+}
+
+.title {
+  text-align: center;
+  background-color: darkcyan;
+  padding: 10px;
+  color: white;
+  font-family: cursive;
+}
+
+
+
+.hero {
+  width: 100%;
+  background-image: url(../assets/img/bebeGafas.jpg);
+  background-repeat: round;
+  background-size: cover;
+  height: 300px;
+
+}

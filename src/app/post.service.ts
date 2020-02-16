@@ -11,30 +11,30 @@ export class PostService {
   post: Post;
   constructor() {
 
-    this.arrPosts = [
-      new Post('pepe', 'pepe', 'pepe', 'pepe', 'pepe', 'pepe'),
-      new Post('maria', 'maria', 'maria', 'maria', 'maria', 'maria'),
-      new Post('juan', 'juan', 'juan', 'juan', 'juan', 'juan'),
-    ];
+    this.arrPosts = [];
   }
 
   addPost(post: Post): Promise<Post> {
     const prom = new Promise<any>((resolve, reject) => {
       resolve(this.arrPosts.push(post));
       console.log(this.arrPosts);
+      localStorage.setItem('post', JSON.stringify(this.arrPosts));
 
     });
+
+
     return prom;
-
-    localStorage.setItem('post', JSON.stringify(post));
-
 
   }
 
   getAllPost(): Promise<Post[]> {
     const prom = new Promise<Post[]>((resolve, reject) => {
+      this.arrPosts = JSON.parse(localStorage.getItem('post'));
       resolve(this.arrPosts);
+
+
     });
+
     return prom;
   }
 
