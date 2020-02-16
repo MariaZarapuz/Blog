@@ -1,0 +1,34 @@
+<div class="container">
+  <form class="col-6 offset-3 mt-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Titulo</label>
+      <input type="text" class="form-control" placeholder="Titulo" formControlName="title">
+    </div>
+
+    <div class="form-group">
+      <label>Autor</label>
+      <input type="text" class="form-control" placeholder="" formControlName="author">
+    </div>
+    <label>Categoria</label>
+    <select class="custom-select form-control" formControlName="category">
+
+      <option selected>Selecciona categoria</option>
+      <option value="1">Actualidad</option>
+      <option value="2">Deportes</option>
+      <option value="3">Noticias</option>
+    </select>
+
+    <div class="custom-file my-5">
+      <input type="file" class="custom-file-input" formControlName="imagen">
+      <label class="custom-file-label">Seleciona Imagen</label>
+      <div class="invalid-feedback">Example invalid custom file feedback</div>
+    </div>
+    <div class="form-group">
+      <label>Texto</label>
+      <textarea class="form-control " placeholder="" formControlName="text"></textarea>
+    </div>
+
+
+    <button type="button" class="btn btn-outline-info mt-3">Guardar</button>
+  </form>
+</div>
