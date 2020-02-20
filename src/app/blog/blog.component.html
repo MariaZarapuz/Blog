@@ -1,16 +1,24 @@
 <div class="container ">
   <div class=" row">
-    <h3 class="col-8">Post</h3>
-    <select class="custom-select col-4" formControlName="category" placeholder="Filtrar por categoria">
-      <option selected>Selecciona categoria</option>
-      <option value="1">Consejos</option>
-      <option value="2">Bebes</option>
-      <option value="3">Niños</option>
+    <input type="text" class="form-control col-5 mt-2" [(ngModel)]="inputSearch" (keyup)="search()"
+      placeholder="buscar">
+    <select class="custom-select col-6 mt-2 ml-5" (change)="filterCategory($event)" placeholder="Filtrar por categoria">
+      <option selected value="0">Mostrar todos</option>
+      <option value="1">Experiencia</option>
+      <option value="2">Ideas</option>
+      <option value="3">Anecdotas</option>
+      <option value="4">Trucos</option>
     </select>
+
+
   </div>
   <div class="row">
     <div class="card col-5 m-5" style="width: 18rem;" *ngFor="let post of listaPosts">
       <div class="row">
+        <div class="col-12">
+          <p class="card-title col-12 mt-3 fecha ">Publicado el {{post.date | date:'dd/M/y'}} a las
+            {{post.date | date:'HH:mm'}}h por {{post.author}}</p>
+        </div>
         <div class="col-12 text-center">
           <h3 class="card-title col-12 mt-3 ">{{post.title}}</h3>
         </div>
@@ -20,12 +28,11 @@
             <p class="card-text text-center my-2">{{post.text}}
             </p>
           </div>
-          <div class="card-body row col-12 ml-1">
 
-            <p class="card-text col-6 author">Escrito por: {{post.author}}</p>
 
-            <a href="#" class="btn btn-primary w-25 col-6">Eliminar</a>
-          </div>
+
+          <div class=" btn delete col-12 text-right my-2" (click)="deletePost()">Eliminar</div>
+
 
         </div>
       </div>

@@ -1,5 +1,5 @@
 export class Post {
-
+    id: number;
     title: string;
     text: string;
     author: string;
@@ -9,7 +9,7 @@ export class Post {
 
 
     constructor(pTitle, pText, pAuthor, pImage, pCategory) {
-
+        this.id = 0;
         this.title = pTitle;
         this.text = pText;
         this.author = pAuthor;

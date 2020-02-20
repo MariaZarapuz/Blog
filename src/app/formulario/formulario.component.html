@@ -7,22 +7,33 @@
 
     <div class="form-group">
       <label>Autor</label>
-      <input type="text" class="form-control" placeholder="" formControlName="author">
+      <input type="text" class="form-control" placeholder="Escrito por:" formControlName="author">
     </div>
     <label>Categoria</label>
-    <select class="custom-select form-control" formControlName="category">
+    <select class="custom-select form-control" formControlName="category" placeholder="Selecciona Categoria">
 
-      <option selected>Selecciona categoria</option>
-      <option value="1">Consejos</option>
-      <option value="2">Bebes</option>
-      <option value="3">Niños</option>
+      <option value="1">Experiencia</option>
+      <option value="2">Ideas</option>
+      <option value="3">Anecdotas</option>
+      <option value="4">Trucos</option>
+
+
+
     </select>
 
-    <div class="custom-file my-5">
-      <label>Añadir Imagen</label>
-      <input type="text" class="form-control" formControlName="image">
+    <div class="custom-file row my-5">
+      <div class="col-7">
+        <label>Añadir Imagen</label>
+        <input type="text" [(ngModel)]="imageUrl" class="form-control" formControlName="image"
+          placeholder="Intruduce url imagen">
+      </div>
 
+      <div style="width: 10ppx;height: 100px;" class="col-4" *ngIf="imageUrl !== '' "
+        style=" background-color: aliceblue;">
+        <img style="width: 100%; display: block; height: auto;" [src]="imageUrl">
+      </div>
     </div>
+
     <div class="form-group">
       <label>Texto</label>
       <textarea class="form-control " placeholder="" formControlName="text"></textarea>

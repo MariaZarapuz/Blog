@@ -8,3 +8,20 @@ img {
   font-size: 12px;
   padding-top: 20px;
 }
+
+.fecha {
+  font-size: 10px;
+  margin-bottom: 1px;
+}
+
+.delete {
+  color: rgb(22, 78, 92);
+  font-weight: bolder;
+  font-size: 15px;
+  transition: 1s;
+}
+
+.delete:hover {
+  font-size: 20px;
+  color: rgb(76, 228, 228);
+}

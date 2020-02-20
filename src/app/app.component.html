@@ -1,7 +1,19 @@
 <div class=" body container-fluid">
   <div class="title col-12">
-    <h1>The Blog Childrens</h1>
+    <div class="row">
+      <h1 class="col-6">The Blog
+
+      </h1>
+      <nav class="menu col-6 ">
+        <div class="row">
+
+          <div [routerLink]="['/blog']" class="link btn  col-8">Blog</div>
+          <div [routerLink]="['/new']" class="link btn col-4 text-center">Post</div>
+        </div>
+      </nav>
+    </div>
   </div>
+
   <div class="hero col-12"></div>
 
 

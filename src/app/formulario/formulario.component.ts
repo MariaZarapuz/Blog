@@ -10,7 +10,9 @@ import { PostService } from '../post.service';
 })
 export class FormularioComponent implements OnInit {
   form: FormGroup;
+  imageUrl: string;
   constructor(private postService: PostService) {
+    this.imageUrl = "";
 
     this.form = new FormGroup({
       title: new FormControl('', [Validators.required]),

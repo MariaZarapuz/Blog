@@ -2,25 +2,38 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Libre Baskerville', serif;
+
 }
 
 .body {
-  background-color: rgb(153, 211, 226);
+  background-color: rgb(223, 223, 223);
 }
 
 .title {
-  text-align: center;
-  background-color: darkcyan;
+
+  background-color: rgb(68, 68, 68);
   padding: 10px;
-  color: white;
+  color: rgb(138, 178, 200);
   font-family: cursive;
+}
+
+.menu {
+  text-align: right;
+}
+
+.link {
+  font-size: 24px;
+  font-weight: bolder;
+  text-align: right;
+  color: white;
 }
 
 
 
 .hero {
   width: 100%;
-  background-image: url(../assets/img/bebeGafas.jpg);
+  background-image: url(https://www.taranna.com/docs/semana-santa-cabecera-2020.jpg);
   background-repeat: round;
   background-size: cover;
   height: 300px;
