@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Post } from '../models/post';
 import { PostService } from '../post.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-formulario',
@@ -18,20 +19,24 @@ export class FormularioComponent implements OnInit {
       title: new FormControl('', [Validators.required]),
       text: new FormControl('', [Validators.required]),
       author: new FormControl('', [Validators.required]),
-      image: new FormControl('', [Validators.required]),
+      image: new FormControl(''),
       category: new FormControl('', [Validators.required]),
     });
   }
 
   ngOnInit() {
+    const imgValue = this.form.controls.image;
+    imgValue.valueChanges.pipe(debounceTime(1000)).subscribe(value => {
+      this.imageUrl = value;
+    })
+
   }
 
   onSubmit() {
 
-    // tslint:disable-next-line: max-line-length
-    const post = new Post(this.form.value.title, this.form.value.text, this.form.value.author, this.form.value.image, this.form.value.category);
-    console.log(post);
-    this.postService.addPost(post);
+    this.postService.addPost(this.form.value);
+
+    this.form.reset();
 
   }
 

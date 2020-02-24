@@ -8,8 +8,8 @@ export class Post {
     date: Date;
 
 
-    constructor(pTitle, pText, pAuthor, pImage, pCategory) {
-        this.id = 0;
+    constructor(pId, pTitle, pText, pAuthor, pImage, pCategory) {
+        this.id = pId;
         this.title = pTitle;
         this.text = pText;
         this.author = pAuthor;

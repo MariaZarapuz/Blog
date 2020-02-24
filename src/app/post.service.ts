@@ -8,16 +8,39 @@ import { Post } from './models/post';
 })
 export class PostService {
   arrPosts: Post[];
-  post: Post;
+  idAdd: any;
+
   constructor() {
 
-    this.arrPosts = [];
+    this.arrPosts = new Array;
+
   }
 
-  addPost(post: Post): Promise<Post> {
+  addPost(formValue: any): Promise<Post> {
+
+    if (this.idAdd !== undefined) {
+      this.idAdd = JSON.parse(localStorage.getItem('post')).length;
+      console.log(this.idAdd)
+    } else if (this.idAdd == null) {
+      this.idAdd = 0
+
+    }
+
+    const newPost = new Post(
+      this.idAdd++,
+      formValue.title,
+      formValue.text,
+      formValue.author,
+      formValue.image,
+      formValue.category)
+
+    if (newPost.image == "") {
+      newPost.image = "https://becagrafic.com/wp-content/uploads/2019/09/imagen-no-disponible.jpg"
+    }
+
     const prom = new Promise<any>((resolve, reject) => {
-      resolve(this.arrPosts.unshift(post));
-      console.log(this.arrPosts);
+      resolve(this.arrPosts.push(newPost));
+      // console.log(this.arrPosts)
       localStorage.setItem('post', JSON.stringify(this.arrPosts));
     });
 
@@ -45,36 +68,32 @@ export class PostService {
 
   }
 
-  // getPostTitle(title: string): Promise<Post[]> {
-  //   const prom = new Promise<Post[]>((resolve, reject) => {
-  //     const arrFilterTitle = this.arrPosts.filter((item) => item.title == title)
+  getPostTitle(title: string): Promise<Post[]> {
+    const prom = new Promise<Post[]>((resolve, reject) => {
+      const arrFilterTitle = [];
+      this.arrPosts.filter(item => {
+        const arrTitle = item.title.split(' ');
+        const booleanTitle = arrTitle.includes(title)
+        if (booleanTitle) {
+          arrFilterTitle.push(item);
+        }
+      })
+
+      resolve(arrFilterTitle)
+    })
+
+    return prom;
+  }
 
 
-
-  //         console.log(this.arrPosts)
-  //       }
-
-  //     resolve(this.arrFilterTitle);
-  //   })
-
-
-  //   return prom;
-  // }
-
-  // deletePost(pId: number): Promise<Post> {
-  //   const prom = new Promise<Post>((resolve, reject) => {
-
-  //   })
-  //   return prom
-  // }
-  // getByIdPost(pId: number): Promise<Post[]> {
-  //   const prom = new Promise<Post[]>((resolve, reject) => {
-  //     const arrFilter = this.arrPosts.filter(item => item.id === pId);
-
-  //     resolve(arrFilter);
-  //   });
-  //   return prom;
-  // }
+  getByIdPost(pId: any): Promise<Post[]> {
+    const prom = new Promise<Post[]>((resolve, reject) => {
+      const positionId = this.arrPosts.findIndex(post => post.id == pId);
+      resolve(this.arrPosts.splice(positionId, 1))
+      localStorage.setItem('post', JSON.stringify(this.arrPosts));
+    });
+    return prom;
+  }
 
 }
 

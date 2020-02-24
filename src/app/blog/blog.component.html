@@ -1,8 +1,9 @@
 <div class="container ">
   <div class=" row">
-    <input type="text" class="form-control col-5 mt-2" [(ngModel)]="inputSearch" (keyup)="search()"
+    <input type="text" class="form-control col-xl-5 col-xs-12 mt-2" (keypress)="filterTitle($event)"
       placeholder="buscar">
-    <select class="custom-select col-6 mt-2 ml-5" (change)="filterCategory($event)" placeholder="Filtrar por categoria">
+    <select class="custom-select col-xl-6 col-xs-12 mt-2 ml-5" (change)="filterCategory($event)"
+      placeholder="Filtrar por categoria">
       <option selected value="0">Mostrar todos</option>
       <option value="1">Experiencia</option>
       <option value="2">Ideas</option>
@@ -12,8 +13,8 @@
 
 
   </div>
-  <div class="row">
-    <div class="card col-5 m-5" style="width: 18rem;" *ngFor="let post of listaPosts">
+  <div *ngIf="displayNone==false" class="row container">
+    <div class="card col-xl-4 col-xs-12 " style="margin: 10px auto" *ngFor="let post of listaPosts">
       <div class="row">
         <div class="col-12">
           <p class="card-title col-12 mt-3 fecha ">Publicado el {{post.date | date:'dd/M/y'}} a las
@@ -22,20 +23,24 @@
         <div class="col-12 text-center">
           <h3 class="card-title col-12 mt-3 ">{{post.title}}</h3>
         </div>
-        <div class="imgContainer m-auto col-11">
+        <div class="imgContainer m-auto col-8">
           <img [src]="post.image" class="card-img ">
-          <div class="col-12">
+          <div style="height: 300px;" class="col-12">
             <p class="card-text text-center my-2">{{post.text}}
             </p>
           </div>
 
 
-
-          <div class=" btn delete col-12 text-right my-2" (click)="deletePost()">Eliminar</div>
-
-
         </div>
+
       </div>
+      <div [id]="post.id" class=" delete btn text-right my-2" (click)="deletePost($event)">Eliminar</div>
     </div>
+
+  </div>
+  <div>
+  </div>
+  <div class="text-center noHay" *ngIf="displayNone==true">
+    <p>{{result}}</p>
   </div>
 </div>
