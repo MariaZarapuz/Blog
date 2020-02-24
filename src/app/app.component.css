@@ -7,15 +7,18 @@
 }
 
 .body {
+
   background-color: rgb(223, 223, 223);
 }
 
 .title {
-
+  position: fixed;
+  z-index: 10;
   background-color: rgb(68, 68, 68);
   padding: 10px;
   color: rgb(138, 178, 200);
   font-family: cursive;
+  top: 0px;
 }
 
 .menu {
@@ -37,5 +40,16 @@
   background-repeat: round;
   background-size: cover;
   height: 300px;
+  margin-top: 68px;
 
+}
+
+
+
+ul {
+  margin-left: 371px;
+}
+
+.liBlog {
+  margin: 0 50px;
 }

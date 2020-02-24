@@ -12,14 +12,11 @@
     <div class="form-group">
       <label>Categoria</label>
       <select class="custom-select form-control" formControlName="category">
-        <option [selected]="true">Selecciona Categoria</option>
+
         <option value="1">Experiencia</option>
         <option value="2">Ideas</option>
         <option value="3">Anecdotas</option>
         <option value="4">Trucos</option>
-
-
-
       </select>
 
     </div>
@@ -31,9 +28,8 @@
       </div>
 
 
-      <div style="background-color: aliceblue; width: 250px ; margin:0 auto ;height: auto;; " class='form-control my-4 '
-        *ngIf="imageUrl!== '' ">
-        <img style="width: 100% ;height: auto; " [src]="imageUrl">
+      <div class='divImage form-control my-4 ' *ngIf="imageUrl!== '' ">
+        <img [src]="imageUrl">
       </div>
     </div>
 
@@ -43,6 +39,6 @@
     </div>
 
 
-    <input type="submit" value="Guardar" class="btn btn-outline-info mt-3" [disabled]="!form.valid">
+    <input type="submit" value="Guardar" class="btn btn-outline-info my-3" [disabled]="!form.valid">
   </form>
 </div>

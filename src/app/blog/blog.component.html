@@ -14,7 +14,7 @@
 
   </div>
   <div *ngIf="displayNone==false" class="row container">
-    <div class="card col-xl-4 col-xs-12 " style="margin: 10px auto" *ngFor="let post of listaPosts">
+    <div class="carta card col-xl-4 col-xs-12 " *ngFor="let post of listaPosts">
       <div class="row">
         <div class="col-12">
           <p class="card-title col-12 mt-3 fecha ">Publicado el {{post.date | date:'dd/M/y'}} a las

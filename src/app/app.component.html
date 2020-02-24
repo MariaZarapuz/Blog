@@ -1,14 +1,12 @@
 <div class=" body container-fluid">
   <div class="title col-12">
     <div class="row">
-      <h1 class="col-xl-6 col-xs-12">The Blog
-
-      </h1>
+      <h1 class="col-xl-6 col-xs-12">The Blog</h1>
 
       <nav class=" col-xl-6 navbar text-right navbar-expand-lg navbar-dark ">
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul style="margin-left: 371px;" class="navbar-nav">
-            <li style="margin: 0 50px;" class="nav-item " [ngClass]="{active: statusBlog}">
+          <ul class="navbar-nav">
+            <li class="liBlog nav-item " [ngClass]="{active: statusBlog}">
               <a class="nav-link" (click)="active('Blog')" [routerLink]="['/blog']">Blog <span
                   class="sr-only">(current)</span></a>
             </li>
@@ -19,21 +17,12 @@
           </ul>
         </div>
       </nav>
-
-      <!-- <div class="row">
-
-          <div [routerLink]="['/blog']" class="link btn  col-8">Blog</div>
-          <div [routerLink]="['/new']" class="link btn col-4 text-center">Post</div>
-        </div> -->
-
     </div>
   </div>
 
   <div class="hero col-12"></div>
 
-
   <div class="col-12">
-
     <router-outlet></router-outlet>
   </div>
 </div>

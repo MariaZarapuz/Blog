@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Post } from '../models/post';
 import { PostService } from '../post.service';
 import { debounceTime } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-formulario',
@@ -12,7 +13,7 @@ import { debounceTime } from 'rxjs/operators';
 export class FormularioComponent implements OnInit {
   form: FormGroup;
   imageUrl: string;
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService, private router: Router) {
     this.imageUrl = "";
 
     this.form = new FormGroup({
@@ -36,7 +37,7 @@ export class FormularioComponent implements OnInit {
 
     this.postService.addPost(this.form.value);
 
-    this.form.reset();
+    this.router.navigate(['/blog']);
 
   }
 

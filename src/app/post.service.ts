@@ -12,19 +12,12 @@ export class PostService {
 
   constructor() {
 
-    this.arrPosts = new Array;
+    this.arrPosts = new Array();
+    this.idAdd = 0;
 
   }
 
-  addPost(formValue: any): Promise<Post> {
-
-    if (this.idAdd !== undefined) {
-      this.idAdd = JSON.parse(localStorage.getItem('post')).length;
-      console.log(this.idAdd)
-    } else if (this.idAdd == null) {
-      this.idAdd = 0
-
-    }
+  addPost(formValue: any) {
 
     const newPost = new Post(
       this.idAdd++,
@@ -37,14 +30,13 @@ export class PostService {
     if (newPost.image == "") {
       newPost.image = "https://becagrafic.com/wp-content/uploads/2019/09/imagen-no-disponible.jpg"
     }
+    if (this.arrPosts == null) {
+      this.arrPosts = new Array()
+    }
+    this.arrPosts.push(newPost)
+    // console.log(this.arrPosts)
+    localStorage.setItem('post', JSON.stringify(this.arrPosts));
 
-    const prom = new Promise<any>((resolve, reject) => {
-      resolve(this.arrPosts.push(newPost));
-      // console.log(this.arrPosts)
-      localStorage.setItem('post', JSON.stringify(this.arrPosts));
-    });
-
-    return prom;
 
   }
 

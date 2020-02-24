@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../models/post';
-import { isBuffer } from 'util';
+
 
 @Component({
   selector: 'app-blog',
@@ -62,7 +62,7 @@ export class BlogComponent implements OnInit {
 
   }
   takeWarning(title) {
-    if (this.listaPosts.length == 0) {
+    if (this.listaPosts == null) {
       this.displayNone = true;
       this.result = title;
     } else {
